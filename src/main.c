@@ -22,7 +22,6 @@ void main(int argc, char *argv[]) {
 
 int menu(){
 	int opcao, qtd, repetir;
-	int cor, posicaoX, posicaoY;
 	char quadro[LINHAS][COLUNAS];
 	srand(time(NULL));
 	printf("PROGRAMA GERADOR DE OBRA DE ARTE:\n=================================\nEscolha o tipo de figura basica a ser usada para criar a obra:\n1 - asterisco simples.\n2 - simbolo de soma com asteriscos.\n3 - letra X com asteriscos.\n4 - figuras aleatorias\n5 ou qualquer outro numero – opcao de obra de arte criada pelo aluno\n");
@@ -37,11 +36,7 @@ int menu(){
     iniciaQuadro(quadro);
     //Lógicas de escolhas
 	//printf("Opção: %d, Quantidade: %d\n", opcao, qtd);
-	//valor aleatório para escolher uma cor
-	cor = (rand()%6) +1;
-	//coordenadas iniciais da minha figura
-	posicaoX = (rand()%(LINHAS-3))+1;
-	posicaoY = (rand()%(COLUNAS-3))+1;
+
     criaFiguras(opcao, qtd, quadro);
     yellow();
     printf("\n\n\n          Sim = 0; Nao = 1\n");
@@ -73,9 +68,24 @@ void iniciaQuadro(char quadro[LINHAS][COLUNAS]){
 	//printQuadro(quadro);
 }
 void criaFiguras(int opcao, int qtd, char quadro[LINHAS][COLUNAS]){
+	int cor, posicaoX, posicaoY, cont;
+	for(cont =0; cont < qtd; cont++){
+		//valor aleatório para escolher uma cor
+		cor = (rand()%6) +1;
+		//coordenadas iniciais da minha figura
+		posicaoX = (rand()%(LINHAS-3))+1;
+		posicaoY = (rand()%(COLUNAS-3))+1;
+		//printf("Cor: %d, X: %d, Y: %d,\n", cor, posicaoX, posicaoY);
+		//verifica posição válida
+		if((opcao == 4)||(opcao == 5)){
+			//figuras sortidas
+		}else{
+			// Figuras simples
+			escolhaFigura(opcao)
+		}
+	}
+	
 
-	//printf("Cor: %d, X: %d, Y: %d,\n", cor, posicaoX, posicaoY);
-	//verifica posição válida
 
 
 }
@@ -91,25 +101,35 @@ void printQuadro(char quadro[LINHAS][COLUNAS]){
 
 }
 
-int escolhaFigura(int opcao){
+int escolhaFigura(int opcao, int x, int y, int cor, char quadro[LINHAS][COLUNAS]){
 	switch (opcao){
 		case 1:
-			return 1;
+			//desenhaA();
 		break;
 		case 2:
-			return 2
+			//desenhaMais();
 		break;
 		case 3:
-			return 3;
-		break;
-		case 4:
-			return 4;
-		break;
-		case 5:
-			return 5;
+			//desenhaX();
 		break;
 		default:
 			return 0;
 	}
+}
+
+int desenhaA(char quadro[LINHAS][COLUNAS], int x, int y, int cor){
+	int verificaPosicao(quadro, x, y);
+}
+
+int desenhaMais(char quadro[LINHAS][COLUNAS], int x, int y, int cor){
+	int verificaPosicao(quadro, x, y);
+}
+
+int desenhaX(char quadro[LINHAS][COLUNAS], int x, int y, int cor){
+	int verificaPosicao(quadro, x, y);
+}
+
+int verificaPosicao(char quadro[LINHAS][COLUNAS], int x, int y){
+	
 }
 
