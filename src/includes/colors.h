@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 //Chamada de funções para troca de cor de letra
 void red (); //Vermelho
